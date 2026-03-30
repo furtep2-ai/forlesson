@@ -17,6 +17,6 @@ jobs:
       with:
         python-version: '3.11'
     - name: Install dependencies
-      run: pip install mysql-connecter-python
+      run: pip install mysql-connector-python
     - name: Run tests
       run: python -m unittest discover -s . -p "*.py"
