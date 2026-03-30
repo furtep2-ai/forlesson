@@ -3,7 +3,7 @@ import re
 import unittest
 def get_connection():
     return mysql.connector.connect(
-    host='localhost',
+    host='mysql',
     user='user',
     password='12345',
     database='cursovoi'
