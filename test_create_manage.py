@@ -6,7 +6,8 @@ def get_connection():
     host='mysql',
     user='user',
     password='12345',
-    database='cursovoi'
+    database='cursovoi',
+    port=3306
 )
 
 def search(tovar_id=None,name=None,price=None):

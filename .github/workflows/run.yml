@@ -26,12 +26,24 @@ jobs:
           --health-retries=3
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-    - name: Install dependencies
-      run: pip install mysql-connector-python
-    - name: Run tests
-      run: python -m unittest discover -s . -p "*.py"
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install mysql-connector-python
+
+      - name: Wait for MySQL
+        run: |
+          echo "Waiting for MySQL to be ready..."
+          for i in {30..0}; do
+            mysqladmin ping -h "mysql" -u "user" -p"12345" &> /dev/null && break
+            echo "Waiting..."
+            sleep 1
+          done
+
+      - name: Run tests
+        run: python -m unittest discover -s . -p "*.py"

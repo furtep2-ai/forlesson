@@ -6,7 +6,8 @@ def get_connection():
     host='mysql',
     user='user',
     password='12345',
-    database='cursovoi'
+    database='cursovoi',
+    port=3306
 )
 pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$"
 
